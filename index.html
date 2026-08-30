@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ironclad // Tank Duel</title>
+    <meta name="description" content="A two-tank arcade battlefield duel with configurable arenas and armor." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div>
+            <p class="eyebrow">ARCADE WARFARE / 02</p>
+            <h1>IRONCLAD <span>//</span> TANK DUEL</h1>
+          </div>
+        </div>
+        <div class="topbar-note"><span class="status-dot"></span> LOCAL COMBAT SIMULATION</div>
+      </header>
+
+      <main class="workspace">
+        <aside class="control-column">
+          <section class="panel mission-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">MISSION SELECT</p>
+                <h2>Choose your arena</h2>
+              </div>
+              <span class="section-number">01</span>
+            </div>
+            <div class="map-list" id="map-list"></div>
+          </section>
+
+          <section class="panel armor-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">ARMOR CONFIG</p>
+                <h2>Shots to destroy</h2>
+              </div>
+              <span class="section-number">02</span>
+            </div>
+            <div class="hit-options" id="hit-options">
+              <button class="hit-option active" data-hits="1"><strong>01</strong><span>Light armor</span></button>
+              <button class="hit-option" data-hits="2"><strong>02</strong><span>Standard</span></button>
+              <button class="hit-option" data-hits="3"><strong>03</strong><span>Heavy armor</span></button>
+            </div>
+            <p class="panel-help">Every direct hit strips one armor pip. Walls stop shells for both sides.</p>
+          </section>
+
+          <section class="panel controls-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">FIELD MANUAL</p>
+                <h2>Controls</h2>
+              </div>
+              <span class="section-number">03</span>
+            </div>
+            <div class="control-row"><span class="key-cluster"><kbd>↑</kbd><kbd>↓</kbd></span><span>Advance / reverse</span></div>
+            <div class="control-row"><span class="key-cluster"><kbd>←</kbd><kbd>→</kbd></span><span>Steer tank</span></div>
+            <div class="control-row"><span class="key-cluster"><kbd>SPACE</kbd></span><span>Fire main cannon</span></div>
+            <div class="control-row"><span class="key-cluster"><kbd>P</kbd></span><span>Pause the duel</span></div>
+          </section>
+
+          <button class="reset-button" id="reset-button"><span>↻</span> Reset battle</button>
+        </aside>
+
+        <section class="arena-panel">
+          <div class="arena-header">
+            <div>
+              <p class="eyebrow">LIVE BATTLEFIELD</p>
+              <h2 id="arena-title">Training Grounds</h2>
+            </div>
+            <div class="arena-status"><span class="live-pulse"></span><span id="arena-status-text">ENGAGED</span><span class="status-divider"></span><span id="timer">00:00</span></div>
+          </div>
+
+          <div class="hud-strip">
+            <div class="combatant"><span class="tank-swatch player-swatch"></span><div><p class="eyebrow">PLAYER UNIT</p><strong>RAVEN-01</strong></div><div class="armor-readout" id="player-armor"></div></div>
+            <div class="round-readout"><span>ROUND</span><strong id="round-number">01</strong><span class="slash">/</span><strong>05</strong></div>
+            <div class="combatant enemy-combatant"><div class="armor-readout" id="enemy-armor"></div><div><p class="eyebrow">HOSTILE UNIT</p><strong>WOLF-09</strong></div><span class="tank-swatch enemy-swatch"></span></div>
+          </div>
+
+          <div class="canvas-wrap" id="canvas-wrap">
+            <canvas id="battlefield" width="960" height="600" aria-label="Tank battlefield game"></canvas>
+            <div class="canvas-vignette"></div>
+            <div class="game-message hidden" id="game-message">
+              <p class="eyebrow" id="message-kicker">ROUND COMPLETE</p>
+              <h2 id="message-title">Target destroyed</h2>
+              <p id="message-copy">The battlefield is yours.</p>
+              <button class="message-button" id="message-button">Deploy again <span>→</span></button>
+            </div>
+            <div class="pause-badge hidden" id="pause-badge">PAUSED <span>· press P to resume</span></div>
+          </div>
+          <div class="arena-footer"><span><i class="legend-player"></i> YOU</span><span><i class="legend-enemy"></i> MACHINE</span><span><i class="legend-wall"></i> COVER</span><span class="footer-tip">TIP: Use cover, then peek and fire.</span></div>
+        </section>
+      </main>
+      <footer class="page-footer"><span>IRONCLAD SYSTEMS</span><span>© 1986 / REBUILT FOR THE WEB</span><span>ALL SYSTEMS NOMINAL</span></footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
